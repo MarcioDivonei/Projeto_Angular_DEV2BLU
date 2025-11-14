@@ -1,0 +1,25 @@
+<div class="cart-container">
+  @for (product of products; track product) {
+  <div class="flex gap-4 border-b p-4">
+    <img [src]="product.image" alt="" class="w-[50px]" />
+    <div>
+      <div class="text-lg">{{ product.name }}</div>
+      <div class="flex justify-between">
+        <div>
+            {{ product.quantity }}
+        </div>
+        <div>
+            {{ product.price | currency: "BRL" }}
+        </div>
+      </div>
+    </div>
+    <button class="rounded bg-red-500 p-2 text-white cursor-pointer" (click)="removeItem(product.id)">
+      <i class="las la-trash"></i>
+    </button>
+  </div>
+  } @empty {
+    <div class="text-lg font-bold">
+      Carrinho vazio
+    </div>
+  }
+</div>

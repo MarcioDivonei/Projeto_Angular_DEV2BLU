@@ -1,0 +1,74 @@
+# ============================
+# Angular / Node / Tailwind
+# ============================
+
+# Diretórios de dependências
+node_modules/
+jspm_packages/
+
+# Build output Angular
+dist/
+out-tsc/
+tmp/
+temp/
+
+# Arquivos do Angular CLI
+.angular/
+.angular/cache/
+
+# Cache do TypeScript
+*.tsbuildinfo
+
+# Ambiente / variáveis sensíveis
+environment.prod.ts
+environment.ts
+*.env
+*.env.local
+*.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs / Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Tailwind
+# (Tailwind não gera arquivos próprios, apenas evita caches)
+.tailwind/
+
+# Cache do PostCSS
+.postcss-cache/
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Arquivos de JSON que não devem ir ao repositório
+# (remova estas linhas se quiser acompanhar os arquivos)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Test coverage
+coverage/
+
+# Compilação de Sass / CSS
+*.css.map
+
+# Storybook (opcional, caso use)
+storybook-static/
+.out/
