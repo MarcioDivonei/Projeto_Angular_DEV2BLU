@@ -57,24 +57,35 @@ export class ProductDetail {
     });
   }
  
-  incrementar() {
+incrementar() {
   const atual = this.formGroup.get('quantity')?.value || 0;
   const novo = atual + 1;
   this.formGroup.get('quantity')?.setValue(novo);
 
-  // Atualiza no carrinho se o produto já estiver lá
+  // Atualiza no carrinho
   this.cartService.updateQuantity(this.product.id, novo);
+
+  // Se quantidade for 4, atualiza o valor total
+  if (novo === 4) {
+    const total = this.product.price * novo;
+    this.cartService.updateTotal(this.product.id, total);
+  }
 }
 
-  decrementar() {
+decrementar() {
   const atual = this.formGroup.get('quantity')?.value || 0;
   if (atual > 1) {
     const novo = atual - 1;
     this.formGroup.get('quantity')?.setValue(novo);
 
-    // Atualiza no carrinho se o produto já estiver lá
+    
     this.cartService.updateQuantity(this.product.id, novo);
+
+    
+    if (novo === 4) {
+      const total = this.product.price * novo;
+      this.cartService.updateTotal(this.product.id, total);
+    }
   }
 }
-
 }

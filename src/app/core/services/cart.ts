@@ -7,6 +7,17 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class CartService {
+  updateTotal(productId: number, total: number) {
+  const cartItems = this.cartItems.getValue();
+  const item = cartItems.find(p => p.id === productId);
+  if (item) {
+    item.total = total;
+    this.cartItems.next(cartItems); // atualiza o carrinho com o novo total
+  }
+
+
+}
+
   private cartItems = new BehaviorSubject<Array<ProductOnCartType>>([]);
 
   public addItem(item: ProductOnCartType): void {
@@ -41,13 +52,14 @@ export class CartService {
     this.cartItems.next(products);
   }
 
-  public updateQuantity(productId: number, quantity: number): void {
-    let cartItems = this.cartItems.getValue();
-    const item = cartItems.find(p => p.id === productId);
-
-    if (item) {
-      item.quantity = quantity;
-      this.cartItems.next(cartItems);
-    }
+updateQuantity(productId: number, quantity: number) {
+  const cartItems = this.cartItems.getValue();
+  const item = cartItems.find(p => p.id === productId);
+  if (item) {
+    item.quantity = quantity;
+    item.total = item.price * quantity;
+    this.cartItems.next(cartItems);
   }
+}
+
 }

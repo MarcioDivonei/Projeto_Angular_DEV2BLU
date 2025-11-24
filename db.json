@@ -5,42 +5,48 @@
       "name": "Tapetes Frufru Cozinha Flor Vermelha",
       "price": 205.99,
       "category": "Cozinha",
-      "image": "https://img.elo7.com.br/product/685x685/2FC0390/tapetes-frufru-cozinha-flor-vermelha-antiderrapante-casa.jpg"
+      "image": "https://img.elo7.com.br/product/685x685/2FC0390/tapetes-frufru-cozinha-flor-vermelha-antiderrapante-casa.jpg",
+      "description": "Jogo de tapetes frufru artesanal com estampas florais em vermelho vibrante. Antiderrapante, macio e ideal para trazer charme e aconchego à sua cozinha."
     },
     {
       "id": "2",
       "name": "Tapete Frufru Xícara",
       "price": 205.9,
       "category": "Entrada",
-      "image": "https://img.elo7.com.br/product/685x685/4FBA8EE/tapete-frufru-xicara-jogo-com-3-pecas-croche.jpg"
+      "image": "https://img.elo7.com.br/product/685x685/4FBA8EE/tapete-frufru-xicara-jogo-com-3-pecas-croche.jpg",
+      "description": "Tapete frufru feito à mão com desenho de xícara, perfeito para entradas ou áreas de convivência. Proporciona um ambiente acolhedor e cheio de estilo."
     },
     {
       "id": "3",
       "name": "Tapetes Frufru Banheiro Rosas",
       "price": 199.9,
       "category": "Banheiro",
-      "image": "https://tuacasa.uol.com.br/wp-content/uploads/2019/11/tapete-frufru-28.jpg"
+      "image": "https://tuacasa.uol.com.br/wp-content/uploads/2019/11/tapete-frufru-28.jpg",
+      "description": "Kit de tapetes frufru para banheiro com tema de rosas, trazendo delicadeza e um toque artesanal ao ambiente. Confortável, absorvente e antiderrapante."
     },
     {
       "id": "4",
       "name": "Tapetes Frufru Banheiro Flamingos",
       "price": 199.9,
       "category": "Banheiro",
-      "image": "https://i.pinimg.com/originals/b9/2e/20/b92e20493b43b7e23e588660ff6bfe08.jpg"
+      "image": "https://i.pinimg.com/originals/b9/2e/20/b92e20493b43b7e23e588660ff6bfe08.jpg",
+      "description": "Tapetes frufru com estampa de flamingos, perfeitos para quem busca um banheiro alegre e descontraído. Feito à mão, macio e com excelente fixação."
     },
     {
       "id": "5",
       "name": "Tapetes Frufru Cozinha Caju",
       "price": 205.99,
       "category": "Cozinha",
-      "image": "https://i.pinimg.com/originals/0e/06/30/0e06302a5aaa42045ab1d8ab3ec7a589.jpg"
+      "image": "https://i.pinimg.com/originals/0e/06/30/0e06302a5aaa42045ab1d8ab3ec7a589.jpg",
+      "description": "Tapetes frufru temáticos com desenho de cajus, ideais para cozinhas coloridas e divertidas. Possui acabamento artesanal e base antiderrapante."
     },
     {
       "id": "6",
       "name": "Tapete Morango",
       "price": 80.9,
       "category": "Entrada",
-      "image": "https://i.pinimg.com/originals/06/31/57/063157c477b7a435504ef5ad526cc95d.jpg"
+      "image": "https://i.pinimg.com/originals/06/31/57/063157c477b7a435504ef5ad526cc95d.jpg",
+      "description": "Tapete decorativo em formato de morango, perfeito para dar um toque divertido e acolhedor à entrada da casa. Macio, resistente e fácil de limpar."
     }
   ]
 }

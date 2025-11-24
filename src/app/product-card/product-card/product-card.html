@@ -1,32 +1,28 @@
-<div class="group m cursor-pointer border-2 border-white rounded-2xl">
-  <a [routerLink]="['/product', product.id]">
-    <div class="aspect-square rounded-t-2xl bg-gray-100 overflow-hidden mb-4">
+<div class="group  bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+  
+    <div class="aspect-square rounded-t-2xl bg-gray-100 overflow-hidden">
       <img
+        [routerLink]="['/product', product.id]"
         [src]="product.image"
-        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        alt="{{ product.name }}"
+        class="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300"
       />
     </div>
 
-    <div class="space-y-1 p-4">
+    <div class="space-y-2 p-4">
       <p class="text-gray-500 text-sm">{{ product.category }}</p>
       <h3 class="text-pink-400 text-lg font-bold">{{ product.name }}</h3>
-      <p class="text-black">R$ {{ product.price }}</p>
+      <p class="text-gray-600 text-sm leading-snug">{{ product.description }}</p>
     </div>
-  </a>
-  <div class="flex p-4">
-    <button class="p-4 rounded cursor-pointer" [routerLink]="['/product', product.id]">
-      Detalhes
-    </button>
+  
+
+  <div class="flex items-center justify-between px-4 pb-4">
+    <p class="text-black font-semibold">R$ {{ product.price }}</p>
     <button
-      class="p-4 bg-slate-600 hover:bg-slate-700 text-white rounded cursor-pointer"
-      (click)="delete()"
+      [routerLink]="['/product', product.id]"
+      class="px-4 py-2 cursor-pointer bg-pink-400 hover:bg-pink-500 text-white rounded-full transition-colors duration-300"
     >
-      Excluir
-    </button>
-    <button (click)="addToCart()"
-      class="ml-auto p-4 bg-rose-500 hover:bg-rose-600 text-white rounded cursor-pointer justify-end"
-    >
-      Adicionar ao Carrinho
+      Ver Detalhes
     </button>
   </div>
 </div>

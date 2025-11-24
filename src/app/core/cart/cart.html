@@ -1,25 +1,71 @@
-<div class="cart-container">
-  @for (product of products; track product) {
-  <div class="flex gap-4 border-b p-4">
-    <img [src]="product.image" alt="" class="w-[50px]" />
-    <div>
-      <div class="text-lg">{{ product.name }}</div>
-      <div class="flex justify-between">
-        <div>
-            {{ product.quantity }}
+<div class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div class="lg:col-span-2 space-y-6">
+    <ng-container *ngIf="products?.length; else emptyCart">
+      <div *ngFor="let product of products; trackBy: trackByProduct" class="flex items-center gap-4 border-b pb-4">
+        <img [src]="product.image" [alt]="product.name" class="w-20 h-20 object-cover rounded-lg" />
+
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-pink-500">{{ product.name }}</h3>
+          <p class="text-sm text-gray-500">
+            200cm x 150cm • Lã e Algodão
+          </p>
+          <div class="mt-3 flex items-center gap-4">
+            <div class="flex items-center rounded-full overflow-hidden">
+              <button (click)="decrementar(product)"
+                class="px-3 py-2 bg-pink-500 text-white hover:bg-pink-600 focus:outline-none"
+                aria-label="Diminuir quantidade">−</button>
+              <input class="w-14 text-center px-2 py-2 focus:outline-none" [value]="product.quantity ?? 1" readonly
+                aria-label="Quantidade" />
+
+              <button (click)="incrementar(product)"
+                class="px-3 py-2 bg-pink-500 text-white hover:bg-pink-600 focus:outline-none"
+                aria-label="Aumentar quantidade">+</button>
+            </div>
+            <div class="text-sm text-gray-700 font-medium">
+              {{ (product.price * (product.quantity ?? 1)) | currency:'BRL' }}
+            </div>
+          </div>
         </div>
-        <div>
-            {{ product.price | currency: "BRL" }}
-        </div>
+        <button class="rounded-full bg-red-500 p-2 text-white hover:bg-red-600 transition"
+          (click)="removeItem(product.id)" aria-label="Remover item">
+          <i class="las la-trash"></i>
+        </button>
       </div>
-    </div>
-    <button class="rounded bg-red-500 p-2 text-white cursor-pointer" (click)="removeItem(product.id)">
-      <i class="las la-trash"></i>
-    </button>
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <div class="text-lg font-bold text-center text-gray-600">Carrinho vazio</div>
+    </ng-template>
   </div>
-  } @empty {
-    <div class="text-lg font-bold">
-      Carrinho vazio
+
+  <div class="bg-gray-50 rounded-xl p-6 shadow-md space-y-4 h-fit">
+    <h2 class="text-xl font-bold text-gray-800">Resumo do Pedido</h2>
+
+    <div class="flex justify-between text-sm text-gray-700">
+      <span>Subtotal</span>
+      <span class="font-medium">{{ totalCartValue | currency:'BRL' }}</span>
     </div>
-  }
+
+    <div class="flex justify-between text-sm text-gray-700">
+      <span>Frete</span>
+      <span class="text-pink-500 font-semibold">Grátis</span>
+    </div>
+
+    <div class="flex justify-between text-lg font-bold text-gray-900 border-t pt-4">
+      <span>Total</span>
+      <span>{{ totalCartValue | currency:'BRL' }}</span>
+    </div>
+
+    <div class="pt-4 space-y-3">
+      <button class="w-full bg-pink-500 cursor-pointer hover:bg-pink-600 text-white py-3 rounded-full font-semibold"
+        (click)="finalizarCompra()">
+        Finalizar Compra
+      </button>
+
+      <button class="w-full border border-pink-500 cursor-pointer text-pink-500 py-3 rounded-full font-semibold"
+        (click)="continuarComprando()">
+        Continuar Comprando
+      </button>
+    </div>
+  </div>
 </div>

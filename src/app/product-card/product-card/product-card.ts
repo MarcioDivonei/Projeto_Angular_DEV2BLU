@@ -16,12 +16,6 @@ export class ProductCard {
 
   constructor(private productService: ProductService, private cartService: CartService) {}
 
-  delete() {    
-    this.productService.deleteProductById(this.product.id);
-  }
-  addToCart(){
-    this.cartService.addItem({
-      ...this.product
-    })
-  }
+ 
+ 
 }

@@ -32,10 +32,12 @@ export interface ProductType {
   name: string;
   price: number;
   category: string;
+  description: string;
   image: string;
 }
 
 export interface ProductOnCartType extends ProductType {
   quantity?: number;
   observations?: string;
+  total?: number;
 }
