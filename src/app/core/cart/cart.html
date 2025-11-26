@@ -1,6 +1,6 @@
 <div class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
   <div class="lg:col-span-2 space-y-6">
-    <ng-container *ngIf="products?.length; else emptyCart">
+    <ng-container *ngIf="products.length; else emptyCart">
       <div *ngFor="let product of products; trackBy: trackByProduct" class="flex items-center gap-4 border-b pb-4">
         <img [src]="product.image" [alt]="product.name" class="w-20 h-20 object-cover rounded-lg" />
 

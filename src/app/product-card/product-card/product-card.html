@@ -17,7 +17,7 @@
   
 
   <div class="flex items-center justify-between px-4 pb-4">
-    <p class="text-black font-semibold">R$ {{ product.price }}</p>
+    <p class="text-black font-semibold">{{ product.price | currency: "BRL"}}</p>
     <button
       [routerLink]="['/product', product.id]"
       class="px-4 py-2 cursor-pointer bg-pink-400 hover:bg-pink-500 text-white rounded-full transition-colors duration-300"

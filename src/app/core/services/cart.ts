@@ -7,16 +7,16 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class CartService {
-  updateTotal(productId: number, total: number) {
-  const cartItems = this.cartItems.getValue();
-  const item = cartItems.find(p => p.id === productId);
-  if (item) {
-    item.total = total;
-    this.cartItems.next(cartItems); // atualiza o carrinho com o novo total
+   updateTotal(productId: number, total: number) {
+   const cartItems = this.cartItems.getValue();
+   const item = cartItems.find(p => p.id === productId);
+    if (item) {
+     item.total = total;
+      this.cartItems.next(cartItems); // atualiza o carrinho com o novo total
+    }
+
+
   }
-
-
-}
 
   private cartItems = new BehaviorSubject<Array<ProductOnCartType>>([]);
 

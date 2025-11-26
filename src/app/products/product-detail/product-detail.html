@@ -20,15 +20,18 @@
         <p class="text-gray-800 text-sm">Frete grátis para todo Brasil</p>
       </div>
     </div>
-    <p class="text-black text-3xl ">R$ {{ product.price }} <span class="text-sm font-medium text-gray-500">à
-        vista</span></p>
+   <p class="text-black text-3xl">
+  {{ (product.price * (formGroup.get('quantity')?.value || 1)) | currency:'BRL' }}
+  <span class="text-sm font-medium text-gray-500">à vista</span>
+</p>
+
     <form [formGroup]="formGroup" class="flex items-center gap-4">
       <label class="text-sm text-gray-700">Quantidade</label>
       <div class="flex items-center">
-        <button type="button" (click)="incrementar(); $event.preventDefault()"
+        <button type="button" (click)="incrementar()"
           class="px-3 py-2 bg-pink-400 hover:bg-pink-500 rounded-l-full text-white">+</button>
         <input type="text" formControlName="quantity" class="w-16 text-center focus:outline-none bg-white px-2 py-2" />
-        <button type="button" (click)="decrementar(); $event.preventDefault()"
+        <button type="button" (click)="decrementar()"
           class="px-3 py-2 bg-pink-400 hover:bg-pink-500 rounded-r-full  text-white">-</button>
       </div>
     </form>

@@ -23,7 +23,7 @@ export class Cart implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.cartService
       .cartItemsHasChanged()
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.destroy$))//basicamente desliga a escuta quando sair da pagina
       .subscribe((products: ProductOnCartType[] = []) => {
         this.products = products;
         this.totalCartValue = this.calculateTotal(products);
@@ -31,7 +31,7 @@ export class Cart implements OnInit, OnDestroy {
   }
 
   private calculateTotal(products: ProductOnCartType[]): number {
-    return products.reduce((acc, p) => acc + p.price * (p.quantity ?? 1), 0);
+    return products.reduce((acc, p) => acc + p.price * (p.quantity ?? 1), 0); // acc é total acumulado
   }
 
   removeItem(productId: number): void {
@@ -42,7 +42,6 @@ export class Cart implements OnInit, OnDestroy {
     const atual = product.quantity ?? 0;
     const novo = atual + 1;
     this.cartService.updateQuantity(product.id, novo);
-    // o serviço emite a nova lista e o subscribe atualiza products e total
   }
 
   decrementar(product: ProductOnCartType): void {
@@ -50,19 +49,16 @@ export class Cart implements OnInit, OnDestroy {
     if (atual > 1) {
       const novo = atual - 1;
       this.cartService.updateQuantity(product.id, novo);
-    } else {
-      // se quiser remover quando chegar a zero, descomente:
-      // this.removeItem(product.id);
     }
   }
 
   trackByProduct(index: number, item: ProductOnCartType) {
-    return item.id;
+    return item.id; //tackby faz atualizar só um item
   }
 
   finalizarCompra(): void {
-    // exemplo: navegar para checkout
-    this.router.navigate(['/checkout']);
+
+    this.router.navigate(['/checkout']); //falta implementar
   }
 
   continuarComprando(): void {

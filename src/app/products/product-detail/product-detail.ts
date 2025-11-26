@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService, ProductType } from '../../core/services/product';
 import { CartService } from '../../core/services/cart';
 import { FormBuilder,  FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-product-detail',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CurrencyPipe],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
 })
@@ -26,30 +27,17 @@ export class ProductDetail {
     });
     
     this.formGroup = this.formBuilder.group({
-      quantity: [1],
-      observations: ['Digite aqui...', Validators.required]
+      quantity: [1]
     });
 
     this.formGroup.valueChanges.subscribe((value) => {
       console.log(value);
     });
 
-    this.formGroup.get('quantity')?.valueChanges.subscribe((value) => {
-      console.log('Quantity changed:', value);
-      if (value < 1) {
-        this.formGroup.get('observations')?.disable();
-      } else {
-        this.formGroup.get('observations')?.enable();      
-      }
-    });
+
   }
-
+  
   addToCart() {
-
-    if (this.formGroup.invalid) {
-      alert('Por favor, preencha os campos corretamente.');
-      return;
-    }
 
     this.cartService.addItem({
       ...this.product,
@@ -61,31 +49,20 @@ incrementar() {
   const atual = this.formGroup.get('quantity')?.value || 0;
   const novo = atual + 1;
   this.formGroup.get('quantity')?.setValue(novo);
-
-  // Atualiza no carrinho
   this.cartService.updateQuantity(this.product.id, novo);
-
-  // Se quantidade for 4, atualiza o valor total
-  if (novo === 4) {
-    const total = this.product.price * novo;
-    this.cartService.updateTotal(this.product.id, total);
-  }
+  const total = this.product.price * novo;
+  this.cartService.updateTotal(this.product.id, total);
 }
 
 decrementar() {
   const atual = this.formGroup.get('quantity')?.value || 0;
   if (atual > 1) {
     const novo = atual - 1;
-    this.formGroup.get('quantity')?.setValue(novo);
-
-    
-    this.cartService.updateQuantity(this.product.id, novo);
-
-    
-    if (novo === 4) {
-      const total = this.product.price * novo;
-      this.cartService.updateTotal(this.product.id, total);
-    }
+    this.formGroup.get('quantity')?.setValue(novo); 
+    this.cartService.updateQuantity(this.product.id, novo);   
+    const total = this.product.price * novo;
+    this.cartService.updateTotal(this.product.id, total);
   }
 }
+
 }
